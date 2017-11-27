@@ -4,10 +4,13 @@ title: Setup
 permalink: /setup/
 ---
 
-This workshop is designed to be run on pre-imaged Amazon Web Services 
-(AWS) instances. All the software and data used in the workshop are 
-hosted on an Amazon Machine Image (AMI). For information about how to
-use the workshop materials, see the 
-[setup instructions](http://www.datacarpentry.org/genomics-workshop/setup/) on the main workshop page.
+To participate in this workshop, you will need access to the **bash** shell, as well as a copy of the sample data files.
 
+For information on accessing the shell on your laptop and downloading the sample data, see the [materials](https://duke-gcb.github.io/SciComp-Nov-2017/#materials) section on our workshop page.
+
+Before we can use the data, we must
+
+1. Download the `dc_sample_data.zip` file
+2. Extract its contents - a `dc_sample_data` folder (double-click the file if your browser didn't extract it automatically).
+3. Move the folder to your home directory (e.g. `/Users/dan` or `C:\Users\Dan`)
 
