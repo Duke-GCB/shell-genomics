@@ -26,7 +26,7 @@ which allows you to control your computer using commands entered
 with a keyboard instead of controlling graphical user interfaces
 (GUIs) with a mouse/keyboard combination.
 
-There are many reasons to learn about the shell.
+There are many reasons to learn about the shell:
 
 * Many bioinformatics tools can only be used through a command line interface, or
 have extra capabilities in the command line version that are not available in the GUI.
@@ -45,8 +45,6 @@ so that others can check your work or apply your process to new data.
 * Many bioinformatic tasks require large amounts of computing power and can't realistically be run on your
 own machine. These tasks are best performed using remote computers or cloud computing, which can only be accessed
 through a shell.
-
-![Automation](../img/gvng.jpg)
 
 In this lesson you will learn how to use the command line interface to move around in your file system.
 
@@ -93,7 +91,7 @@ Several commands are frequently used to create, inspect, rename, and delete file
 >
 > If you type the command:
 > `PS1='$ '`
-> into your shell, followed by pressing the 'enter' key,
+> into your shell, followed by pressing the <kbd>Enter</kbd> key,
 > your window should look like our example in this lesson.
 > This isn't necessary to follow along (in fact, your prompt may have
 > other helpful information you want to know about).  This is up to you!
@@ -114,7 +112,7 @@ Let's find out where we are by running a command called `pwd`
 At any moment, our **current working directory**
 is our current default directory,
 i.e.,
-the directory that the computer assumes we want to run commands in
+the directory that the computer assumes we want to run commands in,
 unless we explicitly specify something else.
 Here,
 the computer's response is `/home/dcuser`,
@@ -130,32 +128,37 @@ $ pwd
 ~~~
 {: .output}
 
-Let's look at how our file system is organized.
-
-At the top is our `dcuser` directory, which holds all the
-subdirectories and files.
-
-Inside that directory are some other directories:
+Let's look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`,
+which stands for "listing":
 
 ~~~
-dc_sample_data	FastQC	Trimmomatic-0.32
-~~~
-{: .output}
-
-The command to change locations in our file system is `cd` followed by a
-directory name to change our working directory.
-`cd` stands for "change directory".
-
-Let's say we want to navigate to the `dc_sample_data` directory we saw above.  We can
-use the following command to get there:
-
-~~~
-$ cd dc_sample_data
+$ ls
 ~~~
 {: .bash}
 
-We can see files and subdirectories are in this directory by running `ls`,
-which stands for "listing":
+~~~
+R  r_data  shell_data
+~~~
+{: .output}
+
+`ls` prints the names of the files and directories in the current directory in
+alphabetical order,
+arranged neatly into columns.
+We'll be working within the `shell_data` subdirectory, and creating new subdirectories, throughout this workshop.
+
+The command to change locations in our file system is `cd`, followed by a
+directory name to change our working directory.
+`cd` stands for "change directory".
+
+Let's say we want to navigate to the `shell_data` directory we saw above.  We can
+use the following command to get there:
+
+~~~
+$ cd shell_data
+~~~
+{: .bash}
+
+Let's look at what is in this directory:
 
 ~~~
 $ ls
@@ -167,10 +170,7 @@ sra_metadata  untrimmed_fastq
 ~~~
 {: .output}
 
-`ls` prints the names of the files and directories in the current directory in
-alphabetical order,
-arranged neatly into columns.
-We can make its output more comprehensible by using the **flag** `-F`,
+We can make the `ls` output more comprehensible by using the **flag** `-F`,
 which tells `ls` to add a trailing `/` to the names of directories:
 
 ~~~
@@ -194,8 +194,8 @@ $ man ls
 {: .bash}
 
 Some manual files are very long. You can scroll through the file using
-your keyboard's down arrow or use the space key to go forward one page
-and the `b` key to go backwards one page. When you are done reading, hit `q`
+your keyboard's down arrow or use the <kbd>Space</kbd> key to go forward one page
+and the <kbd>b</kbd> key to go backwards one page. When you are done reading, hit <kbd>q</kbd>
 to quit.
 
 > ## Challenge
@@ -210,8 +210,9 @@ to quit.
 > > {: .bash}
 > >
 > > ~~~
+> > total 8
 > > drwxr-x--- 2 dcuser dcuser 4096 Jul 30  2015 sra_metadata
-> > drwxr-xr-x 2 dcuser dcuser 4096 Jul 30  2015 untrimmed_fastq
+> > drwxr-xr-x 2 dcuser dcuser 4096 Nov 15  2017 untrimmed_fastq
 > > ~~~
 > > {: .output}
 > >
@@ -222,7 +223,7 @@ to quit.
 > {: .solution}
 {: .challenge}
 
-No one can possibly learn all of these arguments, that's why the manual page
+No one can possibly learn all of these arguments, that's what the manual page
 is for. You can (and should) refer to the manual page or other help files
 as needed.
 
@@ -248,23 +249,30 @@ We will be learning more about FASTQ files in a later lesson.
 Typing out file or directory names can waste a
 lot of time and it's easy to make typing mistakes. Instead we can use tab complete
 as a shortcut. When you start typing out the name of a directory or file, then
-hit the tab key, the shell will try to fill in the rest of the
+hit the <kbd>Tab</kbd> key, the shell will try to fill in the rest of the
 directory or file name.
 
-For example, type `cd` to go back to your home directory, then enter:
+Return to your home directory:
 
 ~~~
-$ cd dc_sam<tab>
+$ cd
+~~~
+{: .bash}
+
+then enter:
+
+~~~
+$ cd she<tab>
 ~~~
 {: .bash}
 
 The shell will fill in the rest of the directory name for
-`dc_sample_data`.
+`shell_data`.
 
-Now change directories to `untrimmed_fastq` in `dc_sample_data`
+Now change directories to `untrimmed_fastq` in `shell_data`
 
 ~~~
-$ cd dc_sample_data
+$ cd shell_data
 $ cd untrimmed_fastq
 ~~~
 {: .bash}
@@ -278,7 +286,7 @@ of our sample files:
 
 ~~~
 $ cd
-$ cd dc_sample_data
+$ cd shell_data
 $ cd untrimmed_fastq
 $ ls SR<tab>
 ~~~
@@ -286,7 +294,7 @@ $ ls SR<tab>
 
 The shell auto-completes your command to `SRR09`, because all file names in
 the directory begin with this prefix. When you hit
-tab again, the shell will list the possible choices.
+<kbd>Tab</kbd> again, the shell will list the possible choices.
 
 ~~~
 $ ls SRR09<tab><tab>
@@ -299,7 +307,7 @@ SRR097977.fastq  SRR098026.fastq
 {: .output}
 
 Tab completion can also fill in the names of programs, which can be useful if you
-remember the begining of a program name.
+remember the beginning of a program name.
 
 ~~~
 $ pw<tab><tab>
@@ -319,7 +327,7 @@ We now know how to move around our file system using the command line.
 This gives us an advantage over interacting with the file system through
 a GUI as it allows us to work on a remote server, carry out the same set of operations
 on a large number of files quickly, and opens up many opportunities for using
-bioinformatics software that is only available in command line versions.
+bioinformatic software that is only available in command line versions.
 
 In the next few episodes, we'll be expanding on these skills and seeing how
 using the command line shell enables us to make our workflow more efficient and reproducible.

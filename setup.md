@@ -1,12 +1,11 @@
 ---
 layout: page
 title: Setup
-permalink: /setup/
 ---
 
 To participate in this workshop, you will need access to the **bash** shell, as well as a copy of the sample data files.
 
-For information on accessing the shell on your laptop and downloading the sample data, see the [materials](https://duke-gcb.github.io/SciComp-Nov-2017/#materials) section on our workshop page.
+For information on accessing the shell on your laptop and downloading the sample data, see the [materials](https://duke-gcb.github.io/2019-08-12-Duke/#materials) section on our workshop page.
 
 Before we can use the data, we must
 
